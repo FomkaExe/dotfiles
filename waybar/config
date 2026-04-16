@@ -1,0 +1,140 @@
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 20, // Waybar height (to be removed for auto height)
+
+
+    // Choose the order of the modules
+    //"modules-left": ["hyprland/workspaces", "mpd"],
+	"modules-left": ["hyprland/workspaces"],
+    "modules-center": ["hyprland/window"],
+	"modules-right": ["hyprland/language", "pulseaudio", "network", "clock", "tray"],
+
+
+    // Modules configuration
+     "hyprland/workspaces": {
+         "disable-scroll": true,
+         "all-outputs": true,
+         "format": "{name}: {icon}",
+         "format-icons": {
+             "1": "",
+             "2": "",
+             "3": "",
+             // "4": "",
+	     "9": "",
+	     "10": "",
+             "urgent": "",
+             "focused": "",
+             "default": ""
+         }
+     },
+
+    // "mpd": {
+  	// "server": "MPD_HOST",
+	// "port": "6600",
+	// "password": ,
+	// "interval": ,
+	// "timeout": ,
+	//"unknown-tag": "N/A",
+
+        // "format": 	"{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ ",
+	//"format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
+	//"format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+      //  "format-disconnected": "Disconnected ",
+
+        //"interval": 1, //breaks time passed/elapsed
+        //"consume-icons": {
+          //  "on": " "
+        //},
+        //"random-icons": {
+          //  "off": "",
+            //"on": " "
+        //},
+        //"repeat-icons": {
+          //  "on": " "
+        //},
+        //"single-icons": {
+          //  "on": "1 "
+        //},
+        //"state-icons": {
+            //"paused": "",
+          //  "playing": ""
+        //},
+        //"tooltip-format": "MPD (connected)",
+        //"tooltip-format-disconnected": "MPD (disconnected)",
+
+	//"on-click": "mpc toggle",
+	//"on-click-right": "kitty --title=musicplayer -o confirm_os_window_close=0 ncmpcpp",
+	//"on-scroll-up": "mpc next",
+	//"on-scroll-down": "mpc prev"
+    //},
+
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+
+    "clock": {
+        "format": "{:%H:%M}",
+        //"format-alt": "{:%A, %B %d, %Y}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+                    "mode"          : "month",
+                    //"mode-mon-col"  : 3,
+                    //"weeks-pos"     : "right",
+                    "on-scroll"     : 1,
+                    "format": {
+                              "months":     "<span color='#ffead3'><b>{}</b></span>",
+                              "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                              "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                              "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                              }
+                    },
+        "actions":  {
+                    "on-click-right": "mode",
+                    //"on-scroll-up": "tz_up",
+                    //"on-scroll-down": "tz_down",
+                    "on-scroll-up": "shift_up",
+                    "on-scroll-down": "shift_down"
+                    }
+    },
+
+    "hyprland/window": {
+	"format": "{title}",
+	"max-length": 50,
+	"rewrite": {
+		"(.*) - brave": "$1",
+		"(.*) - telegram": "$1",
+		"(.*) - kitty": "$1"
+		}
+    },
+    
+    "hyprland/language": {
+	"format": "{}",
+	"format-en": "US ",
+	"format-ru": "RU ",
+	//"keyboard-name": "at-translated-set-2-keyboard"
+    },
+
+    "pulseaudio": {
+        "scroll-step": 5, // %, can be a float
+        "format": "{volume}%  {format_source}",
+        "format-bluetooth": "{volume}%  {format_source}",
+        "format-bluetooth-muted": " {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "on-click": "pwvucontrol"
+    },
+
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ",
+		"on-click": "kitty --title=nmtui -o confirm_os_window_close=0 nmtui",
+        // "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+}
