@@ -3,15 +3,10 @@
     "position": "top", // Waybar position (top|bottom|left|right)
     "height": 20, // Waybar height (to be removed for auto height)
 
-
-    // Choose the order of the modules
-    //"modules-left": ["hyprland/workspaces", "mpd"],
 	"modules-left": ["hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
-	"modules-right": ["hyprland/language", "pulseaudio", "network", "clock", "tray"],
+	"modules-right": ["custom/notifications", "hyprland/language", "pulseaudio", "network", "clock", "tray"],
 
-
-    // Modules configuration
      "hyprland/workspaces": {
          "disable-scroll": true,
          "all-outputs": true,
@@ -20,59 +15,51 @@
              "1": "",
              "2": "",
              "3": "",
-             // "4": "",
-	     "9": "",
-	     "10": "",
+             "4": "",
+	     	 "9": "",
+		     "10": "",
              "urgent": "",
              "focused": "",
              "default": ""
          }
      },
 
-    // "mpd": {
-  	// "server": "MPD_HOST",
-	// "port": "6600",
-	// "password": ,
-	// "interval": ,
-	// "timeout": ,
-	//"unknown-tag": "N/A",
+    "hyprland/window": {
+		"format": "{title}",
+		"max-length": 50,
+		"rewrite": {
+			"(.*) - brave": "$1",
+			"(.*) - telegram": "$1",
+			"(.*) - kitty": "$1"
+		}
+    },
 
-        // "format": 	"{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ ",
-	//"format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
-	//"format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-      //  "format-disconnected": "Disconnected ",
-
-        //"interval": 1, //breaks time passed/elapsed
-        //"consume-icons": {
-          //  "on": " "
-        //},
-        //"random-icons": {
-          //  "off": "",
-            //"on": " "
-        //},
-        //"repeat-icons": {
-          //  "on": " "
-        //},
-        //"single-icons": {
-          //  "on": "1 "
-        //},
-        //"state-icons": {
-            //"paused": "",
-          //  "playing": ""
-        //},
-        //"tooltip-format": "MPD (connected)",
-        //"tooltip-format-disconnected": "MPD (disconnected)",
-
-	//"on-click": "mpc toggle",
-	//"on-click-right": "kitty --title=musicplayer -o confirm_os_window_close=0 ncmpcpp",
-	//"on-scroll-up": "mpc next",
-	//"on-scroll-down": "mpc prev"
-    //},
+	"custom/notifications": {
+		"tooltip": false,
+	    "format": "{icon} {text}",
+ 		"format-icons": {
+			"notification": "",
+			"none": "",
+			"dnd-notification": "",
+			"dnd-none": "",
+			"inhibited-notification": "",
+			"inhibited-none": "",
+			"dnd-inhibited-notification": "",
+			"dnd-inhibited-none": ""
+		},
+		"return-type": "json",
+		"exec-if": "which swaync-client",
+		"exec": "swaync-client -swb",
+	    "on-click": "swaync-client -t",
+    	"on-click-right": "swaync-client -d",
+    	"escape": true
+	},
 
     "tray": {
         "icon-size": 21,
         "spacing": 10
     },
+
 
     "clock": {
         "format": "{:%H:%M}",
@@ -80,8 +67,6 @@
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
                     "mode"          : "month",
-                    //"mode-mon-col"  : 3,
-                    //"weeks-pos"     : "right",
                     "on-scroll"     : 1,
                     "format": {
                               "months":     "<span color='#ffead3'><b>{}</b></span>",
@@ -93,22 +78,11 @@
                     },
         "actions":  {
                     "on-click-right": "mode",
-                    //"on-scroll-up": "tz_up",
-                    //"on-scroll-down": "tz_down",
                     "on-scroll-up": "shift_up",
                     "on-scroll-down": "shift_down"
                     }
     },
 
-    "hyprland/window": {
-	"format": "{title}",
-	"max-length": 50,
-	"rewrite": {
-		"(.*) - brave": "$1",
-		"(.*) - telegram": "$1",
-		"(.*) - kitty": "$1"
-		}
-    },
     
     "hyprland/language": {
 	"format": "{}",
