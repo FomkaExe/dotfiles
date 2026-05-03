@@ -1,4 +1,5 @@
 {
+	"ipc": "true",
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
     "height": 20, // Waybar height (to be removed for auto height)
@@ -16,8 +17,9 @@
              "2": "",
              "3": "",
              "4": "",
+			 "5": "",
 	     	 "9": "",
-		     "10": "",
+		     "10": "",
              "urgent": "",
              "focused": "",
              "default": ""
@@ -86,8 +88,8 @@
     
     "hyprland/language": {
 	"format": "{}",
-	"format-en": "US ",
-	"format-ru": "RU ",
+	"format-en": "US ",
+	"format-ru": "RU ",
 	//"keyboard-name": "at-translated-set-2-keyboard"
     },
 
