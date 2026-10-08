@@ -10,7 +10,7 @@
 
 alias neofetch='fastfetch'
 alias ls='ls --color=auto'
-alias la='ls -A'
+alias la='ls -lah'
 alias vim='nvim'
 alias vi='nvim'
 alias grep='grep --color=auto'

@@ -49,9 +49,10 @@ window#waybar {
 }
 
 #custom-notifications.dnd-notification {
-  animation: notif-blink 1s linear infinite;
+  /*animation: notif-blink 1s linear infinite;
   border: 2px solid red;  
-  background-color: red;
+  background-color: red;*/
+  border: 2px solid transparent;
 }
 
 #custom-notifications.dnd-none {
