@@ -22,7 +22,7 @@ export PATH="$PATH:/home/fomka/.local/bin"
 
 alias neofetch='fastfetch'
 alias ls='ls --color=auto'
-alias la='ls -lah --color=auto'
+alias la='ls -lahbv --color=auto'
 alias vim='nvim'
 alias vi='nvim'
 alias grep='grep --color=auto'
