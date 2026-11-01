@@ -1,8 +1,7 @@
-mkdir -p ~/dotfiles/{hypr,nvim,bash,wofi,waybar,swaync}
+mkdir -p ~/Dotfiles/{hypr,bash,wofi,waybar,swaync}
 
-rsync -av ~/.config/hypr/hyprland.conf ~/dotfiles/hypr/hyprland.conf
-rsync -av ~/.config/hypr/hyprland.lua ~/dotfiles/hypr/hyprland.lua
-cp ~/.bashrc ~/dotfiles/bash/.bashrc
-rsync -av ~/.config/wofi/ ~/dotfiles/wofi/
-rsync -av ~/.config/waybar/ ~/dotfiles/waybar/
-rsync -av ~/.config/swaync/ ~/dotfiles/swaync
+rsync -av ~/.config/hypr/hyprland.lua ~/Dotfiles/hypr/hyprland.lua
+cp ~/.bashrc ~/Dotfiles/bash/.bashrc
+rsync -av ~/.config/wofi/ ~/Dotfiles/wofi/
+rsync -av ~/.config/waybar/ ~/Dotfiles/waybar/
+rsync -av ~/.config/swaync/ ~/Dotfiles/swaync
