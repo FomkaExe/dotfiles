@@ -1,6 +1,3 @@
--- TODO TOC
-
-
 --################
 --### MONITORS ###
 --################
@@ -53,24 +50,45 @@ hl.env("XCURSOR_SIZE", 20)
 hl.env("HYPRCURSOR_SIZE", 20)
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 
+
+hl.env("XDG_CONFIG_HOME", os.getenv("HOME") .. "/.config")
+hl.env("XDG_CACHE_HOME",  os.getenv("HOME") .. "/.cache")
+hl.env("XDG_DATA_HOME",   os.getenv("HOME") .. "/.local/share")
+hl.env("XDG_STATE_HOME",  os.getenv("HOME") .. "/.local/state")
+hl.env("XDG_MENU_PREFIX", "arch-")
+hl.env("XDG_TERMINAL_EXEC", "kitty")
+hl.env("TERMINAL", "kitty")
+hl.env("TERM", "xterm-kitty")
+hl.env("GCC_COLORS", "error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01")
+hl.env("PATH", os.getenv("PATH") .. ":/home/fomka/.local/bin")
+
+hl.env("LESSHISTFILE", "-")
+hl.env("CARGO_HOME", os.getenv("XDG_DATA_HOME") .. "/cargo")
+hl.env("RUSTUP_HOME", os.getenv("XDG_DATA_HOME") .. "/rustup")
+hl.env("CGDB_DIR", os.getenv("XDG_CONFIG_HOME") .. "/cgdb")
+hl.env("NUGET_PACKAGES", os.getenv("XDG_CACHE_HOME") .. "/NuGetPackages")
+hl.env("WINEPREFIX", os.getenv("XDG_DATA_HOME") .. "/wineprefixes/default")
+hl.env("PYTHON_HISTORY", os.getenv("XDG_STATE_HOME") .. "/PYTHON_HISTORY")
+hl.env("PYTHONPYCACHEPREFIX", os.getenv("XDG_CACHE_HOME") .. "/python")
+hl.env("PYTHONUSERBASE", os.getenv("XDG_DATA_HOME") .. "/python")
+hl.env("GTK_RC_FILES", os.getenv("XDG_CONFIG_HOME") .. "/gtk-1.0/gtkrc")
+hl.env("GTK2_RC_FILES", os.getenv("XDG_CONFIG_HOME") .. "/gtk-2.0/gtkrc" 
+  .. ":" .. os.getenv("XDG_CONFIG_HOME") .. "/gtk-2.0/gtkrc.mine")
+hl.env("GNUPGHOME", os.getenv("XDG_DATA_HOME") .. "/gnupg")
+hl.env("TS3_CONFIG_DIR", os.getenv("XDG_CONFIG_HOME") .. "/ts3client")
+hl.env("GOPATH", os.getenv("XDG_DATA_HOME") .. "/go")
+hl.env("NPM_CONFIG_INIT_MODULE", os.getenv("XDG_CONFIG_HOME") .. "/npm/config/npm-init.js")
+hl.env("NPM_CONFIG_CACHE", os.getenv("XDG_CACHE_HOME") .. "/npm")
+hl.env("NPM_CONFIG_TMP", os.getenv("XDG_RUNTIME_DIR") .. "/npm")
+hl.env("PSQL_HISTORY", os.getenv("XDG_STATE_HOME") .. "/psql_history")
+hl.env("HISTFILE", os.getenv("XDG_STATE_HOME") .. "/bash/history")
+hl.env("DOTNET_CLI_HOME", os.getenv("XDG_DATA_HOME") .. "/dotnet")
+hl.env("NUGET_PACKAGES", os.getenv("XDG_CACHE_HOME") .. "/NuGetPackages")
+hl.env("FVM_CACHE_PATH", os.getenv("XDG_CACHE_HOME") .. "/fvm")
+
 --####################
 --## LOOK AND FEEL ###
 --####################
-
--- hl.layout.register("grid", {
---     recalculate = function(ctx)
---         local n = #ctx.targets
---         if n == 0 then
---             return
---         end
---
---         local cols = math.ceil(math.sqrt(n))
---
---         for i, target in ipairs(ctx.targets) do
---             target:place(ctx:grid_cell(i, cols))
---         end
---     end,
--- })
 
 -- not animated
 hl.config({
@@ -551,6 +569,7 @@ hl.window_rule({
 --################
 
 hl.on("hyprland.start", function ()
+    hl.exec_cmd("gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'")
     hl.exec_cmd("waybar")
     hl.exec_cmd("hyprpaper") 
     hl.exec_cmd("wvkbd-en-ru --landscape-layers full,cyrillic --hidden")
@@ -569,4 +588,5 @@ hl.on("hyprland.start", function ()
 
     hl.exec_cmd("nicotine", { workspace = "8 silent" })
     hl.exec_cmd("qbittorrent", { workspace = "8 silent" })
+    hl.exec_cmd("obsidian", { workspace = "5 silent" })
 end)
